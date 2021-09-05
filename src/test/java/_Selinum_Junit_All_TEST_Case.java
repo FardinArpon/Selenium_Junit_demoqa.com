@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.sleep;
 
-public class Selinum_Junit {
+public class _Selinum_Junit_All_TEST_Case {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -31,6 +31,10 @@ public class Selinum_Junit {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
+
+                //-----------``Start Test Case``----------//
+    //---------------------------GET_TITLE---------------------------------//
+
     @Test
     public void getTitle() {
         driver.get("https://demoqa.com");
@@ -40,6 +44,9 @@ public class Selinum_Junit {
     }
 
 
+
+    //----------------------Check If Elements Exists------------------------//
+
     @Test
     public void checkifElementExists() throws InterruptedException {
         driver.get("https://demoqa.com");
@@ -47,6 +54,9 @@ public class Selinum_Junit {
         Assert.assertEquals(status, true);
     }
 
+
+
+    //--------------------------Write on Text-box---------------------------//
 
     @Test
     public void writeOnTextBox(){
@@ -60,6 +70,8 @@ public class Selinum_Junit {
         Assert.assertTrue(text.contains("Rahim"));
     }
 
+
+    //------------------Click on button from multiple elements-----------------//
 
     @Test
     public void clickOnButon() {
@@ -80,7 +92,9 @@ public class Selinum_Junit {
     }
 
 
-    @Test
+
+    //--------------------Select Dropdown-----------------------//
+
     public void selectDropdown(){
         driver.get("https://demoqa.com/select-menu");
         Select color=new Select(driver.findElement(By.id("oldSelectMenu")));
@@ -94,6 +108,9 @@ public class Selinum_Junit {
     }
 
 
+
+   //---------------------Select Date--------------------------//
+
     @Test
     public void selectDate() {
         driver.get("https://demoqa.com/date-picker");
@@ -102,6 +119,10 @@ public class Selinum_Junit {
         driver.findElement(By.id("datePickerMonthYearInput")).sendKeys(Keys.ENTER);
     }
 
+
+
+
+    //-----------------Handle Alerts------------------//
 
     @Test
     public void handleAlerts() throws InterruptedException {
@@ -115,6 +136,10 @@ public class Selinum_Junit {
         String text = driver.findElement(By.id("promptResult")).getText();
         Assert.assertTrue(text.contains("Fahim"));
     }
+
+
+
+    //-------------------------Handle Tabs---------------------------//
 
     @Test
     public void handleTabs() throws InterruptedException {
