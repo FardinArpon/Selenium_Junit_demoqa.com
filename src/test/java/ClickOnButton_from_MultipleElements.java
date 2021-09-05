@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Click_On_Button_From_Multiple_Elements {
+public class ClickOnButton_from_MultipleElements {
     WebDriver driver;
 
     @Before
