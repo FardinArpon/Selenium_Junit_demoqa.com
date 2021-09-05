@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.sleep;
 
-public class _Selinum_Junit_All_TEST_Case {
+public class ___Selinum_junit_all_TEST_Case {
     WebDriver driver;
     WebDriverWait wait;
 
