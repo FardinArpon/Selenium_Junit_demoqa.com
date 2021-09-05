@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.sleep;
 
-public class ______SELENIUM_Junit_ALL_TEST_CASE______ {
+public class __________SELENIUM_Junit_ALL_TEST_CASE______ {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -99,12 +99,6 @@ public class ______SELENIUM_Junit_ALL_TEST_CASE______ {
         driver.get("https://demoqa.com/select-menu");
         Select color=new Select(driver.findElement(By.id("oldSelectMenu")));
         color.selectByValue("3");
-
-//        Select cars = new Select(driver.findElement(By.id("cars")));
-//        if (cars.isMultiple()) {
-//            cars.selectByValue("volvo");
-//            cars.selectByValue("audi");
-//        }
     }
 
 
