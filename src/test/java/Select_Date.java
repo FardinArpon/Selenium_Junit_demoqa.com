@@ -6,12 +6,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class Select_Date {
     WebDriver driver;
-    //    WebDriverException wait
+    WebDriverWait wait;
 
     @Before
     public void setup(){
@@ -22,6 +23,7 @@ public class Select_Date {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+
     @Test
     public void selectDate(){
         driver.get("https://demoqa.com/date-picker");

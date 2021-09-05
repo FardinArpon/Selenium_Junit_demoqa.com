@@ -8,12 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Click_On_Button_From_Multiple_Elements { WebDriver driver;
-    //    WebDriverException wait
+public class Click_On_Button_From_Multiple_Elements {
+    WebDriver driver;
+
     @Before
     public void setup(){
         System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
