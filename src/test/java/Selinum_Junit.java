@@ -12,9 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import static java.lang.Thread.sleep;
 
 public class Selinum_Junit {
     WebDriver driver;
@@ -27,7 +28,7 @@ public class Selinum_Junit {
         ops.addArguments("--headed");
         driver = new FirefoxDriver(ops);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
     @Test
@@ -48,14 +49,14 @@ public class Selinum_Junit {
 
 
     @Test
-    public void writeOnTextBox() {
+    public void writeOnTextBox(){
         driver.get("https://demoqa.com/elements");
         driver.findElement(By.xpath("//span[contains(text(),'Text Box')]")).click();
-        wait=new WebDriverWait(driver,30);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[id=userName]"))).sendKeys("Rahim");
+        wait=new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("userName"))).sendKeys("Rahim");
 //        driver.findElement(By.cssSelector("[id=userName]")).sendKeys("Rahim");
-//        driver.findElement(By.xpath("//button[@id='submit']")).sendKeys("Rahim");
-        String text = driver.findElement(By.cssSelector("[id=name]")).getText();
+        driver.findElement(By.cssSelector("#submit")).sendKeys(Keys.ENTER);
+        String text= driver.findElement(By.cssSelector("[id=name]")).getText();
         Assert.assertTrue(text.contains("Rahim"));
     }
 
@@ -68,9 +69,11 @@ public class Selinum_Junit {
         action.doubleClick(list.get(1)).perform();
         String text = driver.findElement(By.id("doubleClickMessage")).getText();
         Assert.assertTrue(text.contains("You have done a double click"));
+
         action.contextClick(list.get(2)).perform();
         String text2 = driver.findElement(By.id("rightClickMessage")).getText();
         Assert.assertTrue(text2.contains("You have done a right click"));
+
         list.get(3).click();
         String text3 = driver.findElement(By.id("dynamicClickMessage")).getText();
         Assert.assertTrue(text3.contains("You have done a dynamic click"));
@@ -81,12 +84,13 @@ public class Selinum_Junit {
     public void selectDropdown(){
         driver.get("https://demoqa.com/select-menu");
         Select color=new Select(driver.findElement(By.id("oldSelectMenu")));
-        color.selectByValue("1");
-        Select cars=new Select(driver.findElement(By.id("cars")));
-        if (cars.isMultiple()) {
-            cars.selectByValue("volvo");
-            cars.selectByValue("audi");
-        }
+        color.selectByValue("3");
+
+//        Select cars = new Select(driver.findElement(By.id("cars")));
+//        if (cars.isMultiple()) {
+//            cars.selectByValue("volvo");
+//            cars.selectByValue("audi");
+//        }
     }
 
 
@@ -106,12 +110,31 @@ public class Selinum_Junit {
         driver.switchTo().alert().accept();
         driver.findElement(By.id(("promtButton"))).click();
         driver.switchTo().alert().sendKeys("Fahim");
-        int sleep = (2000);
+        sleep (2000);
         driver.switchTo().alert().accept();
         String text = driver.findElement(By.id("promptResult")).getText();
         Assert.assertTrue(text.contains("Fahim"));
     }
 
+    @Test
+    public void handleTabs() throws InterruptedException {
+        driver.get("https://demoqa.com/links");
+        driver.findElement(By.id("simpleLink")).click();
+        sleep(2000);
+        ArrayList<String> w = new ArrayList<String>(driver.getWindowHandles());
+        //switch to open tab
+        driver.switchTo().window(w.get(1 ));
+        System.out.println("New tab title: " + driver.getTitle());
+// for(String childTab:driver.getWindowHandles()){
+// driver.switchTo().window(childTab);
+// }
+// System.out.printf(driver.getTitle());
+        Boolean status =
+                driver.findElement(By.xpath("//img[@src='/images/Toolsqa.jpg']")).isDisplayed();
+        Assert.assertEquals(true,status);
+        driver.close();
+        driver.switchTo().window(w.get(0));
+    }
 
     @After
     public void finishTest() {
