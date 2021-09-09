@@ -13,16 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
-public class Handel_Tabs {import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-
-    public class Format {
+public class Handel_Tabs {
 
         WebDriver driver;
         WebDriverWait wait;
@@ -63,4 +54,3 @@ import java.util.concurrent.TimeUnit;
         }
     }
 
-}

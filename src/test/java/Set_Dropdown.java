@@ -11,16 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class Set_Dropdown {
-    import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-
-    public class Format {
 
         WebDriver driver;
         WebDriverWait wait;
@@ -48,4 +38,3 @@ import java.util.concurrent.TimeUnit;
         }
     }
 
-}

@@ -13,16 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.sleep;
 
 public class Handel_Aleats {
-    import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-    public class Format {
         WebDriver driver;
         WebDriverWait wait;
 
@@ -50,9 +41,9 @@ import java.util.concurrent.TimeUnit;
         }
 
         @After
-        public void finishTest() {
+        public void finishTest()
+        {
             driver.close();
         }
     }
 
-}
