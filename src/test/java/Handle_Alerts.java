@@ -11,19 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
-public class Handle_Alerts {
-    WebDriver driver;
-
-    //    WebDriverException wait
-    @Before
-    public void setup() {
-        System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-        FirefoxOptions ops = new FirefoxOptions();
-        ops.addArguments("--headed");
-        driver = new FirefoxDriver(ops);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
+public class Handle_Alerts extends SetUp{
 
     @Test
     public void handleAlerts() throws InterruptedException {
@@ -38,9 +26,5 @@ public class Handle_Alerts {
         Assert.assertTrue(text.contains("Fahim"));
     }
 
-    @After
-    public void finishTest() {
-        driver.close();
-    }
 }
 

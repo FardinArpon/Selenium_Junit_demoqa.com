@@ -10,19 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class Checkif_ElementExists {
-    WebDriver driver;
-    WebDriverWait wait;
+public class Checkif_ElementExists extends SetUp {
 
-    @Before
-    public void setup() {
-        System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-        FirefoxOptions ops = new FirefoxOptions();
-        ops.addArguments("--headed");
-        driver = new FirefoxDriver(ops);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
 
     @Test
     public void checkifElementExists() throws InterruptedException {
@@ -30,9 +19,5 @@ public class Checkif_ElementExists {
         Boolean status = driver.findElement(By.xpath("//img[@src='/images/Toolsqa.jpg']")).isDisplayed();
         Assert.assertEquals(status, true);
     }
-
-    @After
-    public void finishTest() {
-        driver.close();
-    }
 }
+

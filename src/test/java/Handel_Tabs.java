@@ -13,20 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
-public class Handel_Tabs {
-
-        WebDriver driver;
-        WebDriverWait wait;
-
-        @Before
-        public void setup() {
-            System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-            FirefoxOptions ops = new FirefoxOptions();
-            ops.addArguments("--headed");
-            driver = new FirefoxDriver(ops);
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
+public class Handel_Tabs extends SetUp{
 
         @Test
         public void handleTabs() throws InterruptedException {
@@ -48,9 +35,5 @@ public class Handel_Tabs {
             driver.switchTo().window(w.get(0));
         }
 
-        @After
-        public void finishTest() {
-            driver.close();
-        }
     }
 

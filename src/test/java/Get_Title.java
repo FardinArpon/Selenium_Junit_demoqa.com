@@ -10,20 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public class Get_Title {
-    WebDriver driver;
-
-    //    WebDriverException wait
-    @Before
-    public void setup() {
-        System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-        FirefoxOptions ops = new FirefoxOptions();
-        ops.addArguments("--headed");
-        driver = new FirefoxDriver(ops);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
+public class Get_Title extends SetUp {
     @Test
     public void getTitle() {
         driver.get("https://demoqa.com");
@@ -32,8 +19,4 @@ public class Get_Title {
         Assert.assertTrue(title.contains("ToolsQA"));
     }
 
-    @After
-    public void finishTest() {
-        driver.close();
-    }
 }

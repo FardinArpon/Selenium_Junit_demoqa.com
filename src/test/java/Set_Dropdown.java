@@ -10,31 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class Set_Dropdown {
-
-        WebDriver driver;
-        WebDriverWait wait;
-
-        @Before
-        public void setup() {
-            System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-            FirefoxOptions ops = new FirefoxOptions();
-            ops.addArguments("--headed");
-            driver = new FirefoxDriver(ops);
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
+public class Set_Dropdown extends SetUp{
 
         @Test
         public void selectDropdown() {
             driver.get("https://demoqa.com/select-menu");
             Select color = new Select(driver.findElement(By.id("oldSelectMenu")));
             color.selectByValue("3");
-        }
-
-        @After
-        public void finishTest() {
-            driver.close();
         }
     }
 

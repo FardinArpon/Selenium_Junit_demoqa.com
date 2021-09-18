@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 import static java.lang.Thread.sleep;
 
 
-public class All_____SELENIUM_Junit_TEST_CASE___ {
+public class All__SELENIUM_Junit_TEST_CASE___ {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -37,7 +37,7 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     }
 
 
-    //-----------``Start Test Case``----------//
+    //----------``Start Test Case``----------//
     //---------------------------GET_TITLE---------------------------------//
 
     @Test
@@ -52,7 +52,7 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     //----------------------Check If Elements Exists------------------------//
 
     @Test
-    public void checkifElementExists() throws InterruptedException {
+    public void checkIfElementExists() throws InterruptedException {
         driver.get("https://demoqa.com");
         Boolean status = driver.findElement(By.xpath("//img[@src='/images/Toolsqa.jpg']")).isDisplayed();
         Assert.assertEquals(status, true);
@@ -116,7 +116,7 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     }
 
 
-    //-----------------Handle Alerts------------------//
+    //------------------------Handle Alerts---------------------------//
 
     @Test
     public void handleAlerts() throws InterruptedException {
@@ -132,7 +132,6 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     }
 
 
-
     //-------------------------Handle Tabs---------------------------//
 
     @Test
@@ -144,10 +143,10 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
         //switch to open tab
         driver.switchTo().window(w.get(1));
         System.out.println("New tab title: " + driver.getTitle());
-// for(String childTab:driver.getWindowHandles()){
-// driver.switchTo().window(childTab);
-// }
-// System.out.printf(driver.getTitle());
+        // for(String childTab:driver.getWindowHandles()){
+        // driver.switchTo().window(childTab);
+        // }
+        // System.out.printf(driver.getTitle());
         Boolean status =
                 driver.findElement(By.xpath("//img[@src='/images/Toolsqa.jpg']")).isDisplayed();
         Assert.assertEquals(true, status);
@@ -157,11 +156,43 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
 
 
 
-
-    //--------------------------image Search By link---------------------------//
+    //--------------------------image  Upload---------------------------//
 
     @Test
-    public void imagelinkSearch() {
+    public void uploadImage() {
+        driver.get("https://demoqa.com/upload-download");
+        WebElement uploadElement = driver.findElement(By.cssSelector("#uploadFile"));
+        uploadElement.sendKeys("D:\\Automaton_Project\\Selinium Junit\\src\\test\\resources\\cat.jpg");
+
+        String text = driver.findElement(By.id("uploadedFilePath")).getText();
+        Assert.assertTrue(text.contains("C:\\fakepath\\cat.jpg"));
+    }
+
+
+    //-----------------Web-Table Testing-------------------//
+
+    @Test
+    public void WebTablesEdit() {
+        driver.get("https://demoqa.com/webtables");
+        driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[7]/div[1]/span[1]/*[1]")).click();
+        driver.findElement(By.cssSelector("#firstName")).sendKeys("Fardin Arpon");
+        driver.findElement(By.id("submit")).click();
+    }
+
+    @Test
+    public void DeleteWebTables() {
+        driver.get("https://demoqa.com/webtables");
+        driver.findElement(By.cssSelector("div.body-height:nth-child(2) div.container.playgound-body div.row div.col-12.mt-4.col-md-6:nth-child(2) div.web-tables-wrapper div.ReactTable.-striped.-highlight div.rt-table div.rt-tbody div.rt-tr-group:nth-child(3) div.rt-tr.-odd div.rt-td:nth-child(7) div.action-buttons span:nth-child(2) svg:nth-child(1) > path:nth-child(1)")).click();
+        driver.findElement(By.cssSelector("div.body-height:nth-child(2) div.container.playgound-body div.row div.col-12.mt-4.col-md-6:nth-child(2) div.web-tables-wrapper div.ReactTable.-striped.-highlight div.rt-table div.rt-tbody div.rt-tr-group:nth-child(2) div.rt-tr.-even div.rt-td:nth-child(7) div.action-buttons span:nth-child(2) > svg:nth-child(1)")).click();
+        Boolean status = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[3]/div[1]/div[1]")).isDisplayed();
+        Assert.assertEquals(status, true);
+    }
+
+
+    //--------------------------Image Search google---------------------------//
+
+    @Test
+    public void imageSearchByURL() {
         driver.get("https://www.google.com.bd/imghp?hl=en&tab=ri&ogbl");
         driver.findElement(By.xpath("//body/div[@id='viewport']/div[@id='searchform']/div[@id='qbc']/form[@id='tsf']/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/span[1]")).click();
         wait = new WebDriverWait(driver, 10);
@@ -170,55 +201,19 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
 
     }
 
-
-
-    //--------------------------image Search Upload---------------------------//
-
     @Test
-    public void searchImageOnGoogle(){
+    public void searchImageByUpload() {
         driver.get("https://www.google.com/ncr");
         driver.findElement(By.xpath("//a[contains(text(),'Images')]")).click();
         driver.findElement(By.xpath("//div[@class='ZaFQO']")).click();
-//        driver.findElement(By.xpath("//input[@id='Ycyxxc']")).sendKeys("image_url_here"); //if search by image link
+        //driver.findElement(By.xpath("//input[@id='Ycyxxc']")).sendKeys("image_url_here"); //if search by image link
         driver.findElement(By.xpath("//a[contains(text(),'Upload an image')]")).click();
 
         File file = new File("./src/test/resources/cat.jpg");
         driver.findElement(By.name("encoded_image")).sendKeys(file.getAbsolutePath());
         Boolean status = driver.findElement(By.xpath("//img[@class='GMzDwb']")).isDisplayed();
-        Assert.assertEquals(status,true);
+        Assert.assertEquals(status, true);
     }
-
-
-
-    //--------------------------Email Testing---------------------------//
-
-    @Test
-    public void EmailTesting() {
-        driver.get("https://accounts.google.com/signin/v2/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2Fb%2F0%2FAddMailService&followup=https%3A%2F%2Faccounts.google.com%2Fb%2F0%2FAddMailService&hl=en-GB&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#identifierId"))).sendKeys("aminrahman1961@gmail.com");
-        driver.findElement(By.xpath("//div[@class='VfPpkd-dgl2Hf-ppHlrf-sM5MNb']//button[@type='button']")).sendKeys(Keys.ENTER);
-        //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("//input[@type='password']"))).sendKeys("fardinaminarpon@gmail.com");
-        //String text = driver.findElement(By.id("uploadedFilePath")).getText();
-        //Assert.assertTrue(text.contains("Couldn't sign you in"));
-    }
-
-    @Test
-    public void SigninGmail_language_convertedToEnglish(){
-        driver.get("https://www.gmail.com");
-        wait = new WebDriverWait(driver, 10);
-        driver.findElement(By.xpath("//div[@class='ry3kXd Ulgu9']")).click();
-        driver.findElement(By.xpath("//div[@class='OA0qNb ncFHed']//div[@class='MocG8c B9IrJb LMgvRb']//span[@class='vRMGwf oJeWuf'][contains(text(),'English (United States)')]")).click();
-        driver.findElement(By.xpath("//a[contains(text(),'Sign in')]")).click();
-        driver.findElement(By.xpath("//div[@class='ry3kXd Ulgu9']")).click();
-        driver.findElement(By.xpath("//div[@class='OA0qNb ncFHed']//div[@class='MocG8c B9IrJb LMgvRb']//span[@class='vRMGwf oJeWuf'][contains(text(),'English (United States)')]")).click();
-        driver.findElement(By.cssSelector("#identifierId")).sendKeys("fardinaminarpon@gmail.com");
-        driver.findElement(By.cssSelector("#identifierId")).sendKeys(Keys.ENTER);
-//      driver.findElement(By.cssSelector("")).sendKeys(""); //send password in here
-        String text = driver.findElement(By.xpath("//span[contains(@class,'VfPpkd-vQzf8d')]")).getText();
-        Assert.assertTrue(text.contains("Next"));
-    }
-
 
 
     //--------------------------Handle Iframe Test---------------------------//
@@ -232,7 +227,9 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
         driver.switchTo().defaultContent();
     }
 
+
     //--------------------------Scrap Data Test---------------------------//
+
     @Test
     public void scrapData() {
         driver.get("https://demoqa.com/webtables");
@@ -247,7 +244,6 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
             }
         }
     }
-
 
 
     //--------------------------Mouse Hover Testing---------------------------//
@@ -271,14 +267,12 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     }
 
 
-
-
     //--------------------------Screen Shot Capture ---------------------------//
 
     @Test
     public void takeScreenShot() throws IOException {
         driver.get("https://demoqa.com");
-        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String time = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-aa").format(new Date());
         String fileWithPath = "./src/test/resources/screenshots/" + time + ".png";
         File DestFile = new File(fileWithPath);
@@ -286,8 +280,8 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
     }
 
 
-
     //--------------------------Keyboard Events---------------------------//
+
     @Test
     public void keyboardEvents() throws InterruptedException {
         driver.get("https://www.google.com/");
@@ -303,13 +297,31 @@ public class All_____SELENIUM_Junit_TEST_CASE___ {
         Thread.sleep(5000);
     }
 
-    //--------------------------Data Excel sheet Testing---------------------------//
+
+    //-----------------Read Data From Excel sheet Testing-------------------//
 
     @Test
     public void readExcelFile() throws IOException {
         String filePath = ".\\src\\test\\resources";
-        Utils.readFromExcel(filePath,"Samplefile.xls","Sheet1");
+        Utils.readFromExcel(filePath, "Symlefile.xls", "Sheet1");
     }
+
+
+
+
+    //-----------------ModalDialog Testing-------------------//
+
+    @Test
+    public void ModalDialog() {
+
+        driver.get("https://demoqa.com/modal-dialogs");
+        //WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#showSmallModal")));
+        driver.findElement(By.cssSelector("#showSmallModal")).click();
+        Boolean status = driver.findElement(By.xpath("//button[@id='closeSmallModal']")).isDisplayed();
+        Assert.assertEquals(status, true);
+
+    }
+
 
 
     @After

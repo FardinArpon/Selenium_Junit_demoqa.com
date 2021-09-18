@@ -12,19 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ClickButton_fromMultipleElements {
-    WebDriver driver;
-
-    @Before
-    public void setup(){
-        System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
-        FirefoxOptions ops=new FirefoxOptions();
-        ops.addArguments("--headed");
-        driver=new FirefoxDriver(ops);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
+public class ClickButton_fromMultipleElements extends SetUp{
 
     @Test
     public void clickOnButon(){
@@ -40,10 +28,5 @@ public class ClickButton_fromMultipleElements {
         list.get(3).click();
         String text3= driver.findElement(By.id("dynamicClickMessage")).getText();
         Assert.assertTrue(text3.contains("You have done a dynamic click"));
-    }
-
-    @After
-    public void finishTest() {
-        driver.close();
     }
 }
