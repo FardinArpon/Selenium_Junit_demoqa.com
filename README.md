@@ -2,7 +2,6 @@
 Web-automation test project. In this project work with Selenium Web-Driver, Juint test runner on java language.
 
 the website link is https://demoqa.com/
-https://drive.google.com/file/d/1htkBjyPfcj3XDzt1F4jjnCn1iBWNqGOa/view?usp=sharing
 
 ## Technology:
 - Tool: selenium
